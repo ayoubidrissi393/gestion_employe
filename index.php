@@ -1,6 +1,6 @@
 <?php 
     include "connexion.php";
-
+    include "Navbar.php";
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +15,7 @@
     <title>Document</title>
 </head>
 <body>
-<table  class="table table-dark table-striped">
+<table id="table_index" class="table table-dark table-striped">
             <tr>
                 <th>ID</th>
                 <th>nom</th>
@@ -67,7 +67,7 @@
                 echo "<td>".$row["salaire"]."</td>";
                 echo "<td>".$row["fonction"]."</td>";
                 echo "<td><img src=image/" . $row["photo"] . "></td>";
-                echo "<td><a href='modifier.php?ID=$row[ID]'><img src=image/modifier.png ></a></td>";
+                echo "<td><a href='modifier.php?ID=$row[ID]&pic=$row[photo]'><img src=image/modifier.png ></a></td>";
                 echo "<td><a href='index.php?rn=$row[ID]' onClick=\"return confirm('confirmer le supression !!')\"><img src=image/supprimer.png></a></td>";
                 echo "</tr>";
             }

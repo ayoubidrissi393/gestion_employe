@@ -1,6 +1,6 @@
 <?php 
   include "connexion.php";
-  include "Navbar.php";
+ 
 
 ?>
 
@@ -17,7 +17,7 @@
 </head>
 <body>
 <?php
-        //  $photo=$_GET['pic'];
+         $photo=$_GET['pic'];
            // Réecriture des variables
         if(isset($_REQUEST['ID'])) {
         $id = $_REQUEST['ID'];
@@ -38,10 +38,13 @@
             $fileName = $_FILES["uploadfile"]["name"];
             $tempName = $_FILES["uploadfile"]["tmp_name"];
             $folder = "image/" . $fileName;
-            // if($fileName=="")
-            // {
-            //     $fileName=$photo;
-            // }
+            if($fileName=="")
+            {
+                $fileName=$photo;
+            }
+            else{
+                
+            }
             // Requête de modification d'enregistrement
             $sql = "UPDATE `employe`
              SET `Nom`='$nom',`Prenom`='$prenom',`date_de_naissance`='$dateN',`département`='$depa',`salaire`=$salire,`fonction`='$func', `photo`='$fileName'
@@ -69,7 +72,7 @@
         ?>
 <div class="container mt-3">
         <h2>modifier un Employe</h2>
-        <form action="modifier.php?ID=<?php echo $id ?>" method ="POST" enctype="multipart/form-data">
+        <form action="modifier.php?ID=<?php echo $id . "pic=$photo" ?>" method ="POST" enctype="multipart/form-data">
 
             <div class="mb-3">
             <label >Nom:</label>
